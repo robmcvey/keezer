@@ -8,22 +8,22 @@
 /**
  * Whats on tap!?
  */
-const String tap1 = "New England IPA";
-const String tap1Abv = "5.1%";
-float tap1Litres = 16.9;
+const String tap1 = "Pale Ale";
+const String tap1Abv = "5.2%";
+float tap1Litres = 6.5;
 bool reset1 = false;
 
-const String tap2 = "Berliner Weisse";
-const String tap2Abv = "2.8%";
-float tap2Litres = 10.0;
-bool reset2 = false;
+const String tap2 = "** Empty **";
+const String tap2Abv = "";
+float tap2Litres = 0.0;
+bool reset2 = true;
 
-const String tap3 = "(Empty)";
-const String tap3Abv = "";
-float tap3Litres = 0.0;
-bool reset3 = true;
+const String tap3 = "Hefeweizen";
+const String tap3Abv = "4.0%";
+float tap3Litres = 19.0;
+bool reset3 = false;
 
-const String tap4 = "(Empty)";
+const String tap4 = "** Empty **";
 const String tap4Abv = "";
 float tap4Litres = 0.0;
 bool reset4 = true;
@@ -63,10 +63,10 @@ byte flowPin4 = A3;
  * But each meter may have a slight variation so let's
  * have a calibration for each one.
  */
-float calibrationFactor1 = 450;
-float calibrationFactor2 = 450;
-float calibrationFactor3 = 450;
-float calibrationFactor4 = 450;
+float calibrationFactor1 = 450; /* 1.007 FG e.g. pale */
+float calibrationFactor2 = 450; /* 0.009 FG e.g. cider */
+float calibrationFactor3 = 450; /* 1.012 FG e.g. lager */
+float calibrationFactor4 = 450; /* 1.020 FG e.g. stout */
 
 /**
  * Keep track of total flow through each meter
@@ -206,13 +206,13 @@ void loop() {
     PCintPort::detachInterrupt(flowPin3);
     PCintPort::detachInterrupt(flowPin4);
 
-    Serial.print(flowMeterCount1);
-    Serial.print(" | ");
-    Serial.print(flowMeterCount2);
-    Serial.print(" | ");
-    Serial.print(flowMeterCount3);
-    Serial.print(" | ");
-    Serial.println(flowMeterCount4);
+//    Serial.print(flowMeterCount1);
+//    Serial.print(" | ");
+//    Serial.print(flowMeterCount2);
+//    Serial.print(" | ");
+//    Serial.print(flowMeterCount3);
+//    Serial.print(" | ");
+//    Serial.println(flowMeterCount4);
 
     /** 
      * Calculate the number of milliseconds that have passed since the 
